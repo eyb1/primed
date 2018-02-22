@@ -28,7 +28,7 @@ Primed Toolkit
    :alt: PyPI license
 
 
-General utility and NLP functions. Currently under development, so use at your own risk. Tests and thorough documentation will be added at some point (meaning probably never, but I will bear it in mind).
+NLP functions designed for fast execution times. General utility functions added as required. Currently under development, so use at your own risk, although it is likely to be stable if using ``pip``\ .
 
 Installation
 ------------
@@ -122,10 +122,10 @@ Naive implementation for now, hoping redirects will help with the majority of ca
 
    ptk.wiki_uri('DELTA-V Budget')
 
-Match all elements in a list in a string
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+For a given text, match all elements in a given list
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Highly-optimized method to return the first, or all occurences of all elements within a list, in a given text. You also have the option of specifying whether the match must be exact, i.e. equals. Wildcards ``?``\ (exactly one word) and ``*``\ (0 or more words, up to ``max_star``\) are implemented. See tests for more examples. Part of our Cythonized codebase.
+Highly-optimized (super-fast) method to return the first, or all occurrences of all elements within a list, in a given text. You also have the option of specifying whether the match must be exact, i.e. equals. Wildcards ``?``\  (exactly one word) and ``*``\  (0 or more words, up to ``max_star``\ ) are implemented. See tests for more examples. Part of our Cythonized codebase at Primed.
 
 .. code-block:: python
 
