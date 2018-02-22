@@ -8,6 +8,7 @@ python:
   - "3.7-dev"  # 3.7 development branch
   - "nightly"
 install:
+  - pip install -q cython
   - pip install .
 script:
   - pytest
