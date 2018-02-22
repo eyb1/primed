@@ -92,7 +92,7 @@ def test_cprint():
     utilities.cprint('Testing cprint function', style='OK', bold=True, underline=True, newline=True)
     assert True
 
-def test_match_elements():
+def test_match_elements(): # pragma: no cover
     input_text = 'Hello, i am having a rather rather rather wonderful day today and i really enjoy AI coding very much'
     assert cnlp.match_elements(input_text, ['will not match', 'anything at ?'], only_first=False, exact_match=False, max_star=3) == []
     assert cnlp.match_elements(input_text, ['will not match', 'anything at ?'], only_first=True, exact_match=False, max_star=3) is None
