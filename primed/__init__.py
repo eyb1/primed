@@ -27,9 +27,10 @@
 
 __author__ = "Eugene Bann, Primed"
 __copyright__ = 'Copyright (C) 2018 Demios, Inc.'
-__version__ = '0.8'
+__version__ = '0.9'
 
-from .utilities import cprint
+from cnlp import match_elements
+
 from .nlp import ireplace
 from .nlp import ngrams
 from .nlp import oxfordize
@@ -38,3 +39,5 @@ from .nlp import clean
 from .nlp import a
 from .nlp import snake
 from .nlp import wiki_uri
+
+from .utilities import cprint

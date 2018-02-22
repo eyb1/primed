@@ -27,7 +27,7 @@
 
 __author__ = "Eugene Bann, Primed"
 __copyright__ = 'Copyright (C) 2018 Demios, Inc.'
-__version__ = '0.8'
+__version__ = '0.9'
 
 colours = {
     'OK': '\033[92m',

@@ -27,18 +27,18 @@
 coverage run --source=primed setup.py test
 coverage report -m
 coveralls
-m2r README.md
 python setup.py sdist
 twine upload dist/*
 '''
 
 __author__ = "Eugene Bann, Primed"
 __copyright__ = 'Copyright (C) 2018 Demios, Inc.'
-__version__ = '0.8'
+__version__ = '0.9'
 
 from collections import defaultdict
 from string import ascii_uppercase
 from primed import nlp, utilities
+import cnlp
 
 def test_ireplace():
     assert nlp.ireplace('I want a hIPpo for my birthday', 'hippo', 'giraffe') == 'I want a giraffe for my birthday'
@@ -91,3 +91,13 @@ def test_keeper():
 def test_cprint():
     utilities.cprint('Testing cprint function', style='OK', bold=True, underline=True, newline=True)
     assert True
+
+def test_match_elements():
+    input_text = 'Hello, i am having a rather rather rather wonderful day today and i really enjoy AI coding very much'
+    assert cnlp.match_elements(input_text, ['will not match', 'anything at ?'], only_first=False, exact_match=False, max_star=3) == []
+    assert cnlp.match_elements(input_text, ['will not match', 'anything at ?'], only_first=True, exact_match=False, max_star=3) is None
+    assert cnlp.match_elements(input_text, ['i am having a * wonderful day', 'enjoy * coding', 'i am * having', 'i am ? having', 'i ? enjoy'], only_first=False, exact_match=False, max_star=3) == ['i am having a * wonderful day', 'enjoy * coding', 'i am * having', 'i ? enjoy']
+    assert cnlp.match_elements(input_text, ['i am having a * wonderful day', 'enjoy * coding', 'i am * having', 'i am ? having', 'i ? enjoy'], only_first=True, exact_match=False, max_star=3) == 'i am having a * wonderful day'
+    assert cnlp.match_elements(input_text, ['i am having a * wonderful day', 'enjoy * coding', 'i am * having', 'i am ? having', 'i ? enjoy'], only_first=False, exact_match=False, max_star=2) == ['enjoy * coding', 'i am * having', 'i ? enjoy']
+    assert cnlp.match_elements(input_text, ['i am having a * wonderful day', 'enjoy * coding', 'i am * having', 'i am ? having', 'i ? enjoy'], only_first=True, exact_match=True, max_star=3) is None
+    assert cnlp.match_elements(input_text, ['Hello, i am having a * wonderful day today and i really enjoy AI coding very much'], only_first=True, exact_match=True, max_star=3) == 'Hello, i am having a * wonderful day today and i really enjoy AI coding very much'

@@ -27,12 +27,14 @@
 
 __author__ = "Eugene Bann, Primed"
 __copyright__ = 'Copyright (C) 2018 Demios, Inc.'
-__version__ = '0.8'
+__version__ = '0.9'
 
 from setuptools import setup
+from distutils.extension import Extension
+from Cython.Distutils import build_ext
 
 setup(name                  = 'primed',
-      version               = '0.8',
+      version               = '0.9',
       description           = 'The Primed Toolkit',
       author                = 'Eugene Bann, Primed',
       author_email          = 'eugene@primed.one',
@@ -42,7 +44,9 @@ setup(name                  = 'primed',
       packages              = ['primed', 'primed.data'],
       setup_requires        = ['pytest-runner'],
       tests_require         = ['pytest'],
-      install_requires      = [],
+      install_requires      = ['cython'],
+      ext_modules           = [Extension("cnlp", ["cnlp.c"])],
+      cmdclass              = {'build_ext': build_ext},
       zip_safe              = False,
       include_package_data  = True
 )

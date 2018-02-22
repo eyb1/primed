@@ -122,6 +122,15 @@ Naive implementation for now, hoping redirects will help with the majority of ca
 
    ptk.wiki_uri('DELTA-V Budget')
 
+Match all elements in a list in a string
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Highly-optimized method to return the first, or all occurences of all elements within a list, in a given text. You also have the option of specifying whether the match must be exact, i.e. equals. Wildcards ``?``\ (exactly one word) and ``*``\ (0 or more words, up to ``max_star``\) are implemented. See tests for more examples. Part of our Cythonized codebase.
+
+.. code-block:: python
+
+   ptk.match_elements('Hello, I am having a rather wonderful day today, and I enjoy coding.', ['will not match', 'next one will', 'having * wonderful day', 'rather * wonderful day'], only_first=False, exact_match=False, max_star=3)
+
 Utility Examples
 ----------------
 
